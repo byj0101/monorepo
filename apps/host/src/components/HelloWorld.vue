@@ -1,9 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
+import { addTask, removeTodo } from "../store/reducers/todos";
+import { useDispatch, useSelector } from "../store/helpers";
 
-defineProps<{ msg: string }>()
+const dispatch = useDispatch();
+const todos = useSelector((state) => state.todos);
 
-const count = ref(0)
+const update = () => {
+  dispatch(addTask(String(Math.random())));
+};
+
+const remove = () => {
+  dispatch(removeTodo());
+};
+
+defineProps<{ msg: string }>();
+
+const count = ref(0);
 </script>
 
 <template>
@@ -29,6 +42,14 @@ const count = ref(0)
     in your IDE for a better DX
   </p>
   <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <div>
+    <div>Redux 테스트</div>
+    <button @click="update">todo 리스트 추가</button>
+    <ul>
+      <li v-for="(item, idx) in todos.todoList" :key="idx">{{ item }}</li>
+    </ul>
+    <button @click="remove">todo list 삭제</button>
+  </div>
 </template>
 
 <style scoped>
