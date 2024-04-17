@@ -1,10 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { addTask, removeTodo } from "../store/reducers/todos";
+import remoteReducers from "remoteApp/reducers";
+import todoSlice from "../store/reducers/todos";
 import { useDispatch, useSelector } from "../store/helpers";
 
+const { addTask, removeTodo } = todoSlice.actions;
 const dispatch = useDispatch();
-const todos = useSelector((state) => state.todos);
+const todos = useSelector((state: any) => state.todos);
+const todotodos = useSelector((state: any) => state.todotodos);
+
+const { addTask: addRemoteTask, removeTodo: removeRemoteTodo } =
+  remoteReducers.todotodos.actions;
 
 const update = () => {
   dispatch(addTask(String(Math.random())));
@@ -12,6 +18,14 @@ const update = () => {
 
 const remove = () => {
   dispatch(removeTodo());
+};
+
+const remoteUpdate = () => {
+  dispatch(addRemoteTask(String(Math.random())));
+};
+
+const remoteRemove = () => {
+  dispatch(removeRemoteTodo());
 };
 
 defineProps<{ msg: string }>();
@@ -49,6 +63,17 @@ const count = ref(0);
       <li v-for="(item, idx) in todos.todoList" :key="idx">{{ item }}</li>
     </ul>
     <button @click="remove">todo list 삭제</button>
+  </div>
+
+  <div>
+    <div>Redux remote 테스트</div>
+    <button @click="remoteUpdate">todotodo 리스트 추가</button>
+    <ul>
+      <li v-for="(item, idx) in todotodos.todotodoList" :key="idx">
+        {{ item }}
+      </li>
+    </ul>
+    <button @click="remoteRemove">todotodo list 삭제</button>
   </div>
 </template>
 

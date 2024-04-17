@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../storePlugin";
 
-const initialState: RootState["todos"] = {
+const initialState: {
+  todoList: string[];
+} = {
   todoList: [],
 };
 
-export const todoSlice = createSlice({
+const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
@@ -18,6 +19,4 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { addTask, removeTodo } = todoSlice.actions;
-
-export default todoSlice.reducer;
+export default todoSlice;

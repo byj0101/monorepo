@@ -11,6 +11,10 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./Button": "./src/components/Button",
+        "./reducers": "./src/store/reducers",
+      },
+      remotes: {
+        hostApp: "http://localhost:5174/dist/assets/remoteEntry.js",
       },
       shared: ["react", "react-dom"],
     }),

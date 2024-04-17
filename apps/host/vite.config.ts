@@ -11,6 +11,9 @@ export default defineConfig({
       remotes: {
         remoteApp: "http://localhost:5173/dist/assets/remoteEntry.js",
       },
+      exposes: {
+        "./store": "./src/store",
+      },
       shared: ["vue", "react", "react-dom"],
     }),
   ],
