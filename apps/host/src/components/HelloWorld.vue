@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import remoteReducers from "remoteApp/reducers";
 import todoSlice from "../store/reducers/todos";
 import { useDispatch, useSelector } from "../store/helpers";
@@ -29,35 +28,11 @@ const remoteRemove = () => {
 };
 
 defineProps<{ msg: string }>();
-
-const count = ref(0);
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
-  </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
-  <div>
-    <div>Redux 테스트</div>
+  <div className="border-text">
+    <div>host 에서 올린 Redux</div>
     <button @click="update">todo 리스트 추가</button>
     <ul>
       <li v-for="(item, idx) in todos.todoList" :key="idx">{{ item }}</li>
@@ -65,8 +40,8 @@ const count = ref(0);
     <button @click="remove">todo list 삭제</button>
   </div>
 
-  <div>
-    <div>Redux remote 테스트</div>
+  <div className="border-text">
+    <div>remote 에서 올린 Redux</div>
     <button @click="remoteUpdate">todotodo 리스트 추가</button>
     <ul>
       <li v-for="(item, idx) in todotodos.todotodoList" :key="idx">
@@ -80,5 +55,8 @@ const count = ref(0);
 <style scoped>
 .read-the-docs {
   color: #888;
+}
+.border-text {
+  border: 1px solid black;
 }
 </style>
