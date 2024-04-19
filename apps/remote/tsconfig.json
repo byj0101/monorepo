@@ -18,7 +18,22 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      // paths는 baseUrl을 기준으로 모듈 이름의 경로 매핑 목록을 나열합니다.
+      "public/*": ["./src/public/*"], //public 시작하면 public/ 하위 디렉토리를 의미한다.
+      "pages/*": ["./src/pages/*"], //pages 시작하면 pages/ 하위 디렉토리를 의미한다.
+      "types/*": ["./src/types/*"], //types 시작하면 types/ 하위 디렉토리를 의미한다.
+      "components/*": ["./src/components/*"], //components 시작하면 components/ 하위 디렉토리를 의미한다.
+      "containers/*": ["./src/containers/*"], //containers 시작하면 containers/ 하위 디렉토리를 의미한다.
+      "helpers/*": ["./src/helpers/*"], //helpers 시작하면 helpers/ 하위 디렉토리를 의미한다.
+      "modules/*": ["./src/modules/*"], //modules 시작하면 modules/ 하위 디렉토리를 의미한다.
+      "config/*": ["./src/config/*"], //config 시작하면 config/ 하위 디렉토리를 의미한다.
+      "material/*": ["./src/material/*"], //material 시작하면 material/ 하위 디렉토리를 의미한다.
+      "lib/*": ["./src/lib/*"], //lib 시작하면 lib/ 하위 디렉토리를 의미한다.
+      "hooks/*": ["./src/hooks/*"], //hooks 시작하면 hooks/ 하위 디렉토리를 의미한다.
+      "locales/*": ["./src/locales/*"] //hooks 시작하면 hooks/ 하위 디렉토리를 의미한다.
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
